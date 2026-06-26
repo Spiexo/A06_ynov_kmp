@@ -9,7 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.amonteiro.a06_ynov_kmp.domain.model.Weather
 
+
+@Composable
+expect fun WeatherGallery(modifier:Modifier = Modifier, list: List<Weather>)
 
 @Composable
 fun MyError(modifier : Modifier = Modifier, errorMessage : String?){

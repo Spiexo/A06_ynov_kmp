@@ -8,7 +8,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,7 +17,6 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
@@ -50,6 +48,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 import com.amonteiro.a06_ynov_kmp.domain.model.Weather
 import com.amonteiro.a06_ynov_kmp.presentation.ui.MyError
+import com.amonteiro.a06_ynov_kmp.presentation.ui.WeatherGallery
 import com.amonteiro.a06_ynov_kmp.presentation.ui.theme.AppTheme
 import com.amonteiro.a06_ynov_kmp.presentation.viewmodel.MainViewModel
 import org.jetbrains.compose.resources.painterResource
@@ -118,12 +117,8 @@ fun SearchScreen(modifier: Modifier = Modifier, mainViewModel: MainViewModel = v
 
         MyError(errorMessage = errorMessage)
 
+        WeatherGallery(modifier = Modifier.weight(1f), list = list)
 
-        LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.weight(1f)) {
-            items(list.size) {
-                PictureRowItem(data = list[it])
-            }
-        }
 
         Row {
 

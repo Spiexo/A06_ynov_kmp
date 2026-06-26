@@ -1,5 +1,6 @@
 package com.amonteiro.a06_ynov_kmp.data.remote
 
+import com.amonteiro.a06_ynov_kmp.BuildConfig
 import com.amonteiro.a06_ynov_kmp.domain.model.Weather
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -51,7 +52,7 @@ object WeatherApiDataSource {
     }
 
     suspend fun loadWeathers(cityName: String): List<Weather> {
-        val response = client.get("https://api.openweathermap.org/data/2.5/find?q=$cityName&appid=b80967f0a6bd10d23e44848547b26550&units=metric&lang=fr")
+        val response = client.get("https://api.openweathermap.org/data/2.5/find?q=$cityName&appid=${BuildConfig.WEATHER_API_KEY}&units=metric&lang=fr")
 
         if (!response.status.isSuccess()) {
             throw Exception("Erreur API: ${response.status} - ${response.bodyAsText()}")
